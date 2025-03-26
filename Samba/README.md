@@ -22,3 +22,13 @@ It should be run in a Debian 11 or Debian 12 environment.
 ```
 bash  samba-activedirectory-installer.sh
 ```
+
+---
+
+### Samba Active Additional Domain Controller Installer
+
+#### 📦 Install
+```
+bash  samba-activedirectory-installer.sh
+```
+---
