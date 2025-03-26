@@ -46,6 +46,12 @@ Hardening settings in Active Directory environment where Samba is required
 - Debian 11,12
 - Samba Active Directory Environment
 
+#### 📦 Install
+```
+bash samba-activedirectory-hardening.sh
+```
+
+
 ---
 
 ### smb.conf
