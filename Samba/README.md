@@ -29,6 +29,6 @@ bash  samba-activedirectory-installer.sh
 
 #### 📦 Install
 ```
-bash  samba-activedirectory-installer.sh
+bash samba-activedirectory-additional-dc-joiner.sh
 ```
 ---
