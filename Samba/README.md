@@ -37,6 +37,18 @@ It connects to the Domain Controller server in the Samba Active Directory enviro
 bash samba-activedirectory-additional-dc-joiner.sh
 ```
 
+---
 
+### smb.conf
+smb.conf containing recommended configurations
+
+#### 🛠️ Requirements
+- Debian 11,12
+- Samba Active Directory Environment
+
+
+```
+/etc/samba/smb.conf
+```
 
 ---
