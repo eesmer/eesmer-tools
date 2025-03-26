@@ -27,8 +27,15 @@ bash  samba-activedirectory-installer.sh
 
 ### Samba Active Additional Domain Controller Installer
 
+#### 🛠️ Requirements
+- Debian 11,12
+- Samba Active Directory Environment
+
 #### 📦 Install
 ```
 bash samba-activedirectory-additional-dc-joiner.sh
 ```
+
+
+
 ---
