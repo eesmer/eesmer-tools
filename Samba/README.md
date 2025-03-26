@@ -39,6 +39,15 @@ bash samba-activedirectory-additional-dc-joiner.sh
 
 ---
 
+### Samba Active Directory Hardening
+Hardening settings in Active Directory environment where Samba is required
+
+#### 🛠️ Requirements
+- Debian 11,12
+- Samba Active Directory Environment
+
+---
+
 ### smb.conf
 smb.conf containing recommended configurations
 
