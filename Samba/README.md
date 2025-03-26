@@ -22,4 +22,3 @@ It should be run in a Debian 11 or Debian 12 environment.
 ```
 bash  samba-activedirectory-installer.sh
 ```
-
