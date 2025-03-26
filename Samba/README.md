@@ -26,6 +26,7 @@ bash  samba-activedirectory-installer.sh
 ---
 
 ### Samba Active Additional Domain Controller Installer
+It connects to the Domain Controller server in the Samba Active Directory environment and adds an ADC server to the Domain environment.
 
 #### 🛠️ Requirements
 - Debian 11,12
