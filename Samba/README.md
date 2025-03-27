@@ -51,6 +51,19 @@ Hardening settings in Active Directory environment where Samba is required
 bash samba-activedirectory-hardening.sh
 ```
 
+---
+
+### Samba Active Directory Reporting Tool
+It runs on the Domain Controller, checks the Active Directory configuration and gives an analysis output.
+
+#### 🛠️ Requirements
+- Debian 11,12
+- Samba Active Directory Domain Controller
+
+#### 📦 Install
+```
+bash samba-activedirectory-reporting-tool.sh
+```
 
 ---
 
