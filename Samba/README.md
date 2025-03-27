@@ -67,6 +67,20 @@ bash samba-activedirectory-reporting-tool.sh
 
 ---
 
+### Samba Active Directory User Accounts Reporting Tool
+Provides a report that examines user accounts via Domain Controller.
+
+#### 🛠️ Requirements
+- Debian 11,12
+- Samba Active Directory Domain Controller
+
+#### 📦 Install
+```
+bash samba-activedirectory-users-report.sh
+```
+
+---
+
 ### smb.conf
 smb.conf containing recommended configurations
 
