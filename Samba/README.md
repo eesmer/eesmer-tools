@@ -53,7 +53,7 @@ bash samba-activedirectory-hardening.sh
 
 ---
 
-### Samba Active Directory Reporting Tool
+### Samba Active Directory Domain Reporting Tool
 It runs on the Domain Controller, checks the Active Directory configuration and gives an analysis output.
 
 #### 🛠️ Requirements
