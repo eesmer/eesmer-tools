@@ -54,9 +54,12 @@ set -g mouse on
 setw -g mode-keys vi
 bind -T copy-mode-vi v send -X begin-selection
 bind -T copy-mode-vi y send -X copy-selection-and-cancel
+bind -T copy-mode-vi Escape send -X cancel
 
 #  modes
 setw -g clock-mode-colour colour5
 setw -g mode-style 'fg=colour1 bg=colour18'
+
+unbind -T root MouseDown3Pane
 EOF
 
