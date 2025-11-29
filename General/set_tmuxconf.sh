@@ -42,6 +42,7 @@ fi
 
 cat > "$TMUX_CONF_PATH" <<'EOF'
 set -g default-terminal "screen-256color"
+set -g history-limit 100000
 
 set -g visual-activity on
 set -g visual-bell on
