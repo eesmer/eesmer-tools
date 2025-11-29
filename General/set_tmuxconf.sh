@@ -41,6 +41,8 @@ if [[ -f "$TMUX_CONF_PATH" ]]; then
 fi
 
 cat > "$TMUX_CONF_PATH" <<'EOF'
+set -g default-terminal "screen-256color"
+
 set -g visual-activity on
 set -g visual-bell on
 set -g visual-silence on
