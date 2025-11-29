@@ -61,5 +61,21 @@ setw -g clock-mode-colour colour5
 setw -g mode-style 'fg=colour1 bg=colour18'
 
 unbind -T root MouseDown3Pane
+
+bind-key -T root MouseDown3Pane \
+  select-pane -t= \; \
+  display-menu -T "#[align=centre]Pane #{pane_index}" \
+	"Copy line"        y  "copy-mode -t= \; send-keys -X select-line \; send-keys -X copy-selection-and-cancel" \
+	"Copy mode"        c  "copy-mode -t=" \
+	"Paste"            p  "paste-buffer -t=" \
+	""                 ""  "" \
+	"Horizontal split" h  "split-window -h -c '#{pane_current_path}'" \
+	"Vertical split"   v  "split-window -v -c '#{pane_current_path}'" \
+	"Zoom pane"        z  "resize-pane -Z" \
+	"New window here"  n  "new-window -c '#{pane_current_path}'" \
+	""                 ""  "" \
+	"Toggle sync panes" s "set-window-option synchronize-panes \; display-message 'sync: #{?synchronize-panes,on,off}'" \
+	""                 ""  "" \
+	"Kill pane"        x  "kill-pane -t="
 EOF
 
