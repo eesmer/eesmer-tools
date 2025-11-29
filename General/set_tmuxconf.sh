@@ -57,6 +57,6 @@ bind -T copy-mode-vi y send -X copy-selection-and-cancel
 
 #  modes
 setw -g clock-mode-colour colour5
-setw -g mode-style 'fg=colour1 bg=colour18 bold'
+setw -g mode-style 'fg=colour1 bg=colour18'
 EOF
 
