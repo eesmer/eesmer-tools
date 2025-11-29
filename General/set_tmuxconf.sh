@@ -40,3 +40,11 @@ if [[ -f "$TMUX_CONF_PATH" ]]; then
     cp "$TMUX_CONF_PATH" "$BACKUP_NAME"
 fi
 
+cat > "$TMUX_CONF_PATH" <<'EOF'
+set -g visual-activity on
+set -g visual-bell on
+set -g visual-silence on
+setw -g monitor-activity on
+set -g bell-action none
+EOF
+
