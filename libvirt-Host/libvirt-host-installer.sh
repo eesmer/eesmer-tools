@@ -26,3 +26,16 @@ if [[ $# -ne 5 ]]; then
     exit 1
 fi
 
+IFACE="$1"
+IPADDR="$2"
+NETMASK="$3"
+GATEWAY="$4"
+HOSTNAME="$5"
+
+if [[ -z "$IFACE" || -z "$IPADDR" || -z "$NETMASK" || -z "$GATEWAY" || -z "$HOSTNAME" ]]; then
+    echo "Error: Parameters cannot be empty" >&2
+    echo "Usage: $0 <ethernet_card> <ip_address> <hostname>" >&2
+    echo -e
+    exit 1
+fi
+
