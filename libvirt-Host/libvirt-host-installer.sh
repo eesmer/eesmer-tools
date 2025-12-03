@@ -39,3 +39,14 @@ if [[ -z "$IFACE" || -z "$IPADDR" || -z "$NETMASK" || -z "$GATEWAY" || -z "$HOST
     exit 1
 fi
 
+echo -e
+echo "Parameters to be used in the libvirt-host-install (DebianHost Installation)"
+echo "----------------------------------------------------"
+echo "NW Adapter/Interface: $IFACE"
+echo "IP Address          : $IPADDR"
+echo "Netmask             : $NETMASK"
+echo "Gateway             : $GATEWAY"
+echo "Hostname            : $HOSTNAME"
+echo "----------------------------------------------------"
+echo -e
+
