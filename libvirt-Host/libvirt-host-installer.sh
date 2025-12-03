@@ -50,6 +50,7 @@ echo "NW Adapter/Interface: $IFACE"
 echo "IP Address          : $IPADDR"
 echo "Netmask             : $NETMASK"
 echo "Gateway             : $GATEWAY"
+echo "DNS Server          : $DNSSERVER"
 echo "Hostname            : $HOSTNAME"
 echo "----------------------------------------------------"
 echo -e
