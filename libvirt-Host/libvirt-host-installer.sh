@@ -86,3 +86,15 @@ else
         fi
 fi
 
+valid_ipv4() {
+    local ip=$1
+    local IFS=.
+    local -a octets=($ip)
+    [[ ${#octets[@]} -eq 4 ]] || return 1
+    for o in "${octets[@]}"; do
+        [[ "$o" =~ ^[0-9]+$ ]] || return 1
+        (( o >= 0 && o <= 255 )) || return 1
+    done
+    return 0
+}
+
