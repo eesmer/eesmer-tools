@@ -52,6 +52,7 @@ echo "Hostname            : $HOSTNAME"
 echo "----------------------------------------------------"
 echo -e
 
+# Virtualization Feature Check (CPU,BIOS,KVM Module)
 if egrep -q 'vmx|svm' /proc/cpuinfo; then
 	if dmesg | grep -qi "kvm: disabled by bios"; then
 		echo "Error: CPU Virtualization support OK - BIOS Feature Disable!!"
