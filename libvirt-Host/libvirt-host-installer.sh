@@ -112,3 +112,20 @@ else
     exit 1
 fi
 
+mkdir -p /etc/network/interfaces.d
+cat > /etc/network/interfaces.d/debianhostnw <<EOF
+auto $IFACE
+iface $IFACE inet static
+address $IPADDR
+netmask $NETMASK
+gateway $GATEWAY
+EOF
+chmod 644 /etc/network/interfaces.d/debianhostnw
+sed -i "/$IFACE/d" /etc/network/interfaces
+
+echo -e
+echo "libvirt-Host (DebianHost) Installation Completed"
+echo "You can access from the IP address $IPADDR"
+echo "----------------------------------------------------"
+echo -e
+
