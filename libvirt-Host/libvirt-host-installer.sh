@@ -82,38 +82,6 @@ valid_ipv4() {
     return 0
 }
 
-# PACKAGES
-apt-get update || { echo -e "\nError: Repository update failed. Check your internet connection or repository list."; exit 1; }
-apt-get -y install qemu-kvm libvirt-daemon-system libvirt-clients qemu-utils virtinst bridge-utils netfilter-persistent cpu-checker || { echo -e "\nError: Required packages could not be installed"; exit 1; }
-apt-get -y install iputils-arping
-apt-get -y install net-tools
-if ! arping -V 2>/dev/null | grep -qi "iputils"; then
-    echo "Error: Required tools could not be installed. Check internet access" >&2
-    echo -e
-    exit 1
-fi
-
-systemctl enable --now libvirtd
-
-NETWORK_BR1="/tmp/network-br1.xml"
-cat << EOF > "$NETWORK_BR1"
-<network>
-<name>br1-net</name>
-<bridge name='br1'/>
-<forward mode='nat'/>
-<ip address='10.1.1.1' netmask='255.255.255.0'>
-<dhcp start='10.1.1.100' end='10.1.1.200'/>
-</ip>
-</network>
-EOF
-
-virsh net-define "$NETWORK_BR1"
-virsh net-start br1-net
-virsh net-autostart br1-net
-
-sysctl -w net.ipv4.ip_forward=1
-sh -c 'echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf'
-
 if ! ip link show "$IFACE" &>/dev/null; then
     echo "Error: '$IFACE' NW Adapter Not Found!" >&2
     echo -e
@@ -154,6 +122,38 @@ else
     echo -e
     exit 1
 fi
+
+# PACKAGES
+apt-get update || { echo -e "\nError: Repository update failed. Check your internet connection or repository list."; exit 1; }
+apt-get -y install qemu-kvm libvirt-daemon-system libvirt-clients qemu-utils virtinst bridge-utils netfilter-persistent cpu-checker || { echo -e "\nError: Required packages could not be installed"; exit 1; }
+apt-get -y install iputils-arping
+apt-get -y install net-tools
+if ! arping -V 2>/dev/null | grep -qi "iputils"; then
+    echo "Error: Required tools could not be installed. Check internet access" >&2
+    echo -e
+    exit 1
+fi
+
+systemctl enable --now libvirtd
+
+NETWORK_BR1="/tmp/network-br1.xml"
+cat << EOF > "$NETWORK_BR1"
+<network>
+<name>br1-net</name>
+<bridge name='br1'/>
+<forward mode='nat'/>
+<ip address='10.1.1.1' netmask='255.255.255.0'>
+<dhcp start='10.1.1.100' end='10.1.1.200'/>
+</ip>
+</network>
+EOF
+
+virsh net-define "$NETWORK_BR1"
+virsh net-start br1-net
+virsh net-autostart br1-net
+
+sysctl -w net.ipv4.ip_forward=1
+sh -c 'echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf'
 
 mkdir -p /etc/network/interfaces.d
 cat > /etc/network/interfaces.d/debianhostnw <<EOF
