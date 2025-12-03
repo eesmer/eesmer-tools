@@ -81,6 +81,8 @@ if ! arping -V 2>/dev/null | grep -qi "iputils"; then
     exit 1
 fi
 
+systemctl enable --now libvirtd
+
 if ! ip link show "$IFACE" &>/dev/null; then
     echo "Error: '$IFACE' NW Adapter Not Found!" >&2
     echo -e
