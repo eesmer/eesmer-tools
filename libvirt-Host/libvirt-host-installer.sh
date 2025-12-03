@@ -169,6 +169,7 @@ dns-servers $DNSSERVER
 EOF
 chmod 644 /etc/network/interfaces.d/debianhostnw
 sed -i "/$IFACE/d" /etc/network/interfaces
+echo "nameserver $DNSSERVER > /etc/resolv.conf
 
 echo -e
 echo "libvirt-Host (DebianHost) Installation Completed"
