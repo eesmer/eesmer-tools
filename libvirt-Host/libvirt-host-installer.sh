@@ -98,3 +98,17 @@ valid_ipv4() {
     return 0
 }
 
+if ! valid_ipv4 "$IPADDR"; then
+    echo "HATA: '$IPADDR' not valid for IPv4" >&2
+    echo -e
+    exit 1
+fi
+
+if arping -D -I "$IFACE" -c 3 "$IPADDR" >/dev/null 2>&1; then
+    echo "IP ($IPADDR) is available. Static configuration will be starting.."
+else
+    echo "Error: $IPADDR IP Address is already in use on the network. Specify a different ip address" >&2
+    echo -e
+    exit 1
+fi
+
