@@ -93,7 +93,7 @@ fi
 
 if [[ -f /sys/class/net/$IFACE/carrier ]]; then
         if ! grep -q '^1' "/sys/class/net/$IFACE/carrier"; then
-                echo "Error: There is no Link on $IFACE NW Adapter!"
+                echo "Error: There is no link on $IFACE NW Adapter!"
                 echo -e
                 exit 1
         fi
@@ -165,6 +165,7 @@ iface $IFACE inet static
 address $IPADDR
 netmask $NETMASK
 gateway $GATEWAY
+dns-servers $DNSSERVER
 EOF
 chmod 644 /etc/network/interfaces.d/debianhostnw
 sed -i "/$IFACE/d" /etc/network/interfaces
