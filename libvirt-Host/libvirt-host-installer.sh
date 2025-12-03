@@ -59,3 +59,30 @@ if ! arping -V 2>/dev/null | grep -qi "iputils"; then
     exit 1
 fi
 
+if ! ip link show "$IFACE" &>/dev/null; then
+    echo "Error: '$IFACE' NW Adapter Not Found!" >&2
+    echo -e
+    exit 1
+fi
+
+if [[ -f /sys/class/net/$IFACE/carrier ]]; then
+        if ! grep -q '^1' "/sys/class/net/$IFACE/carrier"; then
+                echo "Error: There is no Link on $IFACE NW Adapter!"
+                echo -e
+                exit 1
+        fi
+else
+        if [[ -f "/sys/class/$IFACE/operstate" ]]; then
+                LINK_STATE=$(cat "/sys/class/$IFACE/operstate")
+                if [[ "$LINK_STATE" != "up" ]]; then
+                        echo "Error: $IFACE NW Adapter/Interface is not up (Link Status:$LINK_STATE)"
+                        echo -e
+                        exit 1
+                fi
+        else
+                echo "Error: Could not check link status for $IFACE This cause installetion issues. Check network settings"
+                echo -e
+                exit 1
+        fi
+fi
+
