@@ -129,3 +129,6 @@ echo "You can access from the IP address $IPADDR"
 echo "----------------------------------------------------"
 echo -e
 
+sleep 2
+reboot
+
