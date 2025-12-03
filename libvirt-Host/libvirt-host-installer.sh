@@ -52,6 +52,23 @@ echo "Hostname            : $HOSTNAME"
 echo "----------------------------------------------------"
 echo -e
 
+if egrep -q 'vmx|svm' /proc/cpuinfo; then
+	if dmesg | grep -qi "kvm: disabled by bios"; then
+		echo "Error: CPU Virtualization support OK - BIOS Feature Disable!!"
+		exit 1
+	fi
+	if lsmod | grep -q kvm; then
+		echo "Virtualization: Active (KVM Module Loaded)."
+	else
+		echo "Warning: CPU VT-x/AMD-V supported. KVM Module Not Loaded"
+		echo "BIOS/UEFI virtualization status: OFF"
+		exit 1
+	fi
+else
+	echo "Error: This Host CPU virtualization (VT-x/AMD-V) not supported"
+	exit 1
+fi
+
 # PACKAGES
 apt-get -y install iputils-arping
 apt-get -y install net-tools
