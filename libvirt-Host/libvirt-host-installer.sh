@@ -95,6 +95,10 @@ cat << EOF > "$NETWORK_BR1"
 </network>
 EOF
 
+virsh net-define "$NETWORK_BR1"
+virsh net-start br1-net
+virsh net-autostart br1-net
+
 if ! ip link show "$IFACE" &>/dev/null; then
     echo "Error: '$IFACE' NW Adapter Not Found!" >&2
     echo -e
