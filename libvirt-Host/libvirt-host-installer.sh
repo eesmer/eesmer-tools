@@ -105,6 +105,9 @@ if ! ip link show "$IFACE" &>/dev/null; then
     exit 1
 fi
 
+sysctl -w net.ipv4.ip_forward=1
+sh -c 'echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf'
+
 if [[ -f /sys/class/net/$IFACE/carrier ]]; then
         if ! grep -q '^1' "/sys/class/net/$IFACE/carrier"; then
                 echo "Error: There is no Link on $IFACE NW Adapter!"
