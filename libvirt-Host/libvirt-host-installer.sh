@@ -19,3 +19,10 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
+if [[ $# -ne 5 ]]; then
+    echo "Error: The required parameters for the script to run are missing" >&2
+    echo "Usage: $0 <ethernet_card> <ip_address> <netmask> <gateway> <hostname>" >&2
+    echo -e
+    exit 1
+fi
+
