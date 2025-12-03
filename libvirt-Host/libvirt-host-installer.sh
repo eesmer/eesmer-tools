@@ -8,7 +8,8 @@
 # $2 = IP Address (example: 192.168.1.15)
 # $3 = Netmask (example: 255.255.255.0)
 # $4 = Gateway (example: 192.168.1.1)
-# $5 = Hostname (example: host1)
+# $5 = DNS Server (example: 192.168.1.5)
+# $6 = Hostname (example: host1)
 #------------------------------------------------------------------------------------------
 # Usage: bash debianhost_installer.sh enp0s3 192.168.1.15 255.255.255.0 192.168.1.1 192.168.1.5 host1
 #------------------------------------------------------------------------------------------
@@ -37,7 +38,7 @@ HOSTNAME="$6"
 
 if [[ -z "$IFACE" || -z "$IPADDR" || -z "$NETMASK" || -z "$GATEWAY" || -z $DNSSERVER || -z "$HOSTNAME" ]]; then
     echo "Error: Parameters cannot be empty" >&2
-    echo "Usage: $0 <ethernet_card> <ip_address> <hostname>" >&2
+    echo "Usage: $0 <ethernet_card> <ip_address> <netmask> <gateway> <dns-server> <hostname>" >&2
     echo -e
     exit 1
 fi
