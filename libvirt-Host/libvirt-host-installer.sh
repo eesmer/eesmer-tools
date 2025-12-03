@@ -10,7 +10,7 @@
 # $4 = Gateway (example: 192.168.1.1)
 # $5 = Hostname (example: host1)
 #------------------------------------------------------------------------------------------
-# Usage: bash debianhost_installer.sh enp0s3 192.168.1.15 255.255.255.0 192.168.1.1 host1
+# Usage: bash debianhost_installer.sh enp0s3 192.168.1.15 255.255.255.0 192.168.1.1 192.168.1.5 host1
 #------------------------------------------------------------------------------------------
 
 set -euo pipefail
@@ -21,9 +21,9 @@ if [[ $EUID -ne 0 ]]; then
         exit 1
 fi
 
-if [[ $# -ne 5 ]]; then
+if [[ $# -ne 6 ]]; then
     echo "Error: The required parameters for the script to run are missing" >&2
-    echo "Usage: $0 <ethernet_card> <ip_address> <netmask> <gateway> <hostname>" >&2
+    echo "Usage: $0 <ethernet_card> <ip_address> <netmask> <gateway> <dns-server> <hostname>" >&2
     echo -e
     exit 1
 fi
@@ -32,9 +32,10 @@ IFACE="$1"
 IPADDR="$2"
 NETMASK="$3"
 GATEWAY="$4"
-HOSTNAME="$5"
+DNSSERVER=$5
+HOSTNAME="$6"
 
-if [[ -z "$IFACE" || -z "$IPADDR" || -z "$NETMASK" || -z "$GATEWAY" || -z "$HOSTNAME" ]]; then
+if [[ -z "$IFACE" || -z "$IPADDR" || -z "$NETMASK" || -z "$GATEWAY" || -z $DNSSERVER || -z "$HOSTNAME" ]]; then
     echo "Error: Parameters cannot be empty" >&2
     echo "Usage: $0 <ethernet_card> <ip_address> <hostname>" >&2
     echo -e
