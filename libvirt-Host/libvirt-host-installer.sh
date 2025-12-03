@@ -83,6 +83,18 @@ fi
 
 systemctl enable --now libvirtd
 
+NETWORK_BR1="/tmp/network-br1.xml"
+cat << EOF > "$NETWORK_BR1"
+<network>
+<name>br1-net</name>
+<bridge name='br1'/>
+<forward mode='nat'/>
+<ip address='10.1.1.1' netmask='255.255.255.0'>
+<dhcp start='10.1.1.100' end='10.1.1.200'/>
+</ip>
+</network>
+EOF
+
 if ! ip link show "$IFACE" &>/dev/null; then
     echo "Error: '$IFACE' NW Adapter Not Found!" >&2
     echo -e
