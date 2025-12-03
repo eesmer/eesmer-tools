@@ -70,6 +70,18 @@ else
 	exit 1
 fi
 
+valid_ipv4() {
+    local ip=$1
+    local IFS=.
+    local -a octets=($ip)
+    [[ ${#octets[@]} -eq 4 ]] || return 1
+    for o in "${octets[@]}"; do
+        [[ "$o" =~ ^[0-9]+$ ]] || return 1
+        (( o >= 0 && o <= 255 )) || return 1
+    done
+    return 0
+}
+
 # PACKAGES
 apt-get update || { echo -e "\nError: Repository update failed. Check your internet connection or repository list."; exit 1; }
 apt-get -y install qemu-kvm libvirt-daemon-system libvirt-clients qemu-utils virtinst bridge-utils netfilter-persistent cpu-checker || { echo -e "\nError: Required packages could not be installed"; exit 1; }
@@ -128,18 +140,6 @@ else
                 exit 1
         fi
 fi
-
-valid_ipv4() {
-    local ip=$1
-    local IFS=.
-    local -a octets=($ip)
-    [[ ${#octets[@]} -eq 4 ]] || return 1
-    for o in "${octets[@]}"; do
-        [[ "$o" =~ ^[0-9]+$ ]] || return 1
-        (( o >= 0 && o <= 255 )) || return 1
-    done
-    return 0
-}
 
 if ! valid_ipv4 "$IPADDR"; then
     echo "HATA: '$IPADDR' not valid for IPv4" >&2
