@@ -1,6 +1,8 @@
 #!/bin/bash
 
 #------------------------------------------------------------------------------------------
+# The host machine must be Debian. Tested with Debian13
+# --------------------------------------------
 # Parameters that must be met for it to work:
 # $1 = Ethernet Card (example: eth0, enp0s3)
 # $2 = IP Address (example: 192.168.1.15)
