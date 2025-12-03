@@ -50,3 +50,12 @@ echo "Hostname            : $HOSTNAME"
 echo "----------------------------------------------------"
 echo -e
 
+# PACKAGES
+apt-get -y install iputils-arping
+apt-get -y install net-tools
+if ! arping -V 2>/dev/null | grep -qi "iputils"; then
+    echo "Error: Required tools could not be installed. Check internet access" >&2
+    echo -e
+    exit 1
+fi
+
