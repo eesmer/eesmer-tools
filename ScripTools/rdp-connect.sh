@@ -16,3 +16,11 @@ xfreerdp /v:$SERVER /u:$USERNAME /d:$DOMAIN \
          +clipboard \
          /cert:tofu
 
+# extras:
+# ----------------------------------------
+# +auto-reconnect
+# /auto-reconnect-max-retries:5
+# /network:auto
+# /log-level:WARN
+# /w:1620 /h:1000 (instead of /dynamic-resolution)
+# /fonts (It is available by default in FreeRDP 3.x)
