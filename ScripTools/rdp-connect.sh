@@ -17,10 +17,11 @@ xfreerdp /v:$SERVER /u:$USERNAME /d:$DOMAIN \
          /cert:tofu
 
 # extras:
-# ----------------------------------------
-# +auto-reconnect
-# /auto-reconnect-max-retries:5
-# /network:auto
-# /log-level:WARN
-# /w:1620 /h:1000 (instead of /dynamic-resolution)
-# /fonts (It is available by default in FreeRDP 3.x)
+# --------------------------------------------------------------------------------------------------------------
+# +auto-reconnect               (If the connection is lost, it will attempt to reconnect automatically)
+# /auto-reconnect-max-retries:5 (Limits the number of automatic reconnection attempts to 5)
+# /network:auto                 (It automatically optimizes performance settings by detecting network speed and quality)
+# /log-level:WARN               (Displays only warning and error-level logs)
+# /w:1620 /h:1000               (instead of /dynamic-resolution)
+# /fonts                        ( Set ClearType - It is available by default in FreeRDP 3.x)
+# /printer                      (Redirects the local Linux printer to the RDP session.)
