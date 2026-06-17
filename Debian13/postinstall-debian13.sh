@@ -140,85 +140,12 @@ mv $TMPDIR/ /home/$MYUSER/daily-scripts
 find "/home/$MYUSER" -type d -exec chmod 755 {} \;
 find "/home/$MYUSER" -type f -exec chmod 644 {} \;
 
-# === MY .zshrc CONFIG ===
-cat >"/home/$MYUSER/.zshrc" <<'EOF'
-# ==== MY .zshrc ====
-
-# === Directory and Files Color Setting ===
-export LS_COLORS="$LS_COLORS:*.sh=0;32:*.py=0;32:*.json=0;32:*.jpg=0;35:*.png=0;35:*.pdf=0;36:*.xls=0;36:*.xlsx=0;36:*.doc=0;36:*.docx=0;36:*.txt=0;90:*.log=0;90:*.zip=0;31:*.tar=0;31:*.gz=0;31"
-
-# === Alias ===
-alias off='sudo poweroff'
-alias ls='ls --color=auto'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
-alias off='sudo poweroff'
-alias my='bash ~/daily-scripts/erkan-desktop.sh'
-alias singlescreen='xrandr --output HDMI-1 --same-as eDP-1 --mode 1920x1080 && xrandr --output eDP-1 --off'
-alias mirrorscreen='xrandr --output HDMI-1 --same-as eDP-1 --mode 1920x1080 && xrandr'
-alias multiscreen='xrandr --output HDMI-1 --left-of eDP-1 --mode 1920x1080'
-
-# === Color ZSH Completion (Use LS_COLORS Pallet) ===
-zmodload zsh/complist
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# === Color man (less) ===
-export LESS='-R'
-export LESS_TERMCAP_mb=$'\e[1;31m'   # blink -> bold red
-export LESS_TERMCAP_md=$'\e[1;36m'   # bold  -> cyan
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[1;44;37m' # standout (başlık satırı)
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;32m'   # underline -> green
-export LESS_TERMCAP_ue=$'\e[0m'
-
-# === History ====
-HISTFILE=~/.zsh_history
-HISTSIZE=50000
-SAVEHIST=100000
-setopt HIST_IGNORE_ALL_DUPS HIST_REDUCE_BLANKS SHARE_HISTORY
-
-# === Keymap ===
-bindkey -e
-
-# === Completion ===
-autoload -Uz compinit && compinit
-zmodload zsh/complist
-zstyle ':completion:*' menu select
-setopt AUTO_MENU MENU_COMPLETE
-
-# === fzf settings ===
-export FZF_TMUX=1
-export FZF_TMUX_OPTS='-d 15'
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" 2>/dev/null'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-[[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]] && source /usr/share/doc/fzf/examples/key-bindings.zsh
-[[ -f /usr/share/doc/fzf/examples/completion.zsh    ]] && source /usr/share/doc/fzf/examples/completion.zsh
-export FZF_CTRL_R_OPTS='--sort --exact'
-
-# === Autosuggest + syntax highlighting ===
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# === Prompt Settings ===
-zstyle ':completion:*:*:vim:*' file-sort modification
-autoload -Uz colors && colors
-PROMPT='%F{cyan}%n@%m%f:%F{yellow}%~%f %# '
+# === .bashrc CONFIG ===
+cat >"/home/$MYUSER/.bashrc" <<'EOF'
 EOF
 
-chown "$MYUSER:$MYUSER" "/home/$MYUSER/.zshrc"
-chmod 0644 "/home/$MYUSER/.zshrc"
-###usermod -s /bin/zsh $MYUSER
+chown "$MYUSER:$MYUSER" "/home/$MYUSER/.bashrc"
+chmod 0644 "/home/$MYUSER/.bashrc"
 
 # === erkwelcome.sh wrapper ===
 cat >/usr/local/bin/erkwelcome-wrapper <<'EOF'
