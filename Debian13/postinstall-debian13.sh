@@ -142,6 +142,90 @@ find "/home/$MYUSER" -type f -exec chmod 644 {} \;
 
 # === .bashrc CONFIG ===
 cat >"/home/$MYUSER/.bashrc" <<'EOF'
+# PS1 settings
+if [ "$EUID" -eq 0 ]; then
+    export PS1='\[\e[1;31m\][\u@\h]\[\e[0m\] \[\e[1;36m\]\w\[\e[0m\]\n# '
+else
+    export PS1='\[\e[1;32m\][\u@\h]\[\e[0m\] \[\e[1;36m\]\w\[\e[0m\]\n$ '
+fi
+
+if command -v dircolors >/dev/null 2>&1; then
+  eval "$(dircolors -b)"
+fi
+
+alias ls='ls --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+export LS_COLORS="$LS_COLORS:*.sh=0;32:*.py=0;32:*.json=0;32:*.jpg=0;35:*.png=0;35:*.pdf=0;36:*.xls=0;36:*.xlsx=0;36:*.doc=0;36:*.docx=0;36:*.txt=0;90:*.log=0;90:*.zip=0;31:*.tar=0;31:*.gz=0;31"
+export FZF_DEFAULT_OPTS='--height=40% --layout=reverse --border'
+
+# FZF history commands (CTRL+R)
+__fzf_history_search() {
+    local selected=$(HISTTIMEFORMAT= history | fzf --tac --reverse --no-sort --preview="echo {}" --height 40%)
+    if [[ -n $selected ]]; then
+        READLINE_LINE=$(echo "$selected" | sed 's/^[ ]*[0-9]*[ ]*//')
+        READLINE_POINT=${#READLINE_LINE}
+    fi
+}
+if [[ $- == *i* ]]; then
+        bind -x '"\C-r": __fzf_history_search'
+        # CTRL+R
+        bind '"\e[A": history-search-backward' # UP
+        bind '"\e[B": history-search-forward'  # DOWN
+fi
+
+# History Commands
+export HISTFILE=~/.bash_history
+export HISTSIZE=55000
+export HISTFILESIZE=5000
+shopt -s histappend
+shopt -s cmdhist
+shopt -s histverify
+
+# alias
+alias ll='ls -lah --color=auto'
+alias la='ls -A --color=auto'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias ec="$EDITOR $HOME/.bashrc" # edit .bashrc
+alias sc="source $HOME/.bashrc"  # reload bash configuration
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias off='sudo poweroff'
+alias singlescreen='xrandr --output HDMI-1 --same-as eDP-1 --mode 1920x1080 && xrandr --output eDP-1 --off'
+alias mirrorscreen="xrandr --output eDP-1 --auto --output HDMI-1 --mode 1920x1080 --same-as eDP-1"
+alias add.week='mkdir -p ~/thisweek && echo"$1$2" >> ~/thisweek/memo'
+alias my='bash ~/scripts/daily/erkan-desktop.sh'
+
+# thisweek
+#--------------------------------------------------------------------
+# show.week
+function show.week {
+echo ".:: THIS WEEK ::."
+if [ "$1" = "all" ] || [ "$1" = "" ]; then
+        cat ~/thisweek/memo
+else
+        cat ~/thisweek/memo | grep $1
+fi
+echo "----------------------------------------------------"
+}
+
+# del.week
+function del.week {
+sed -i '/'"$1"'/d' ~/thisweek/memo
+sed -i '/^$/d' ~/thisweek/memo
+}
+#--------------------------------------------------------------------
+
+# random password generation
+function randompw() {
+        #< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c12;echo;
+        #< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c24;echo;
+        < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c12;echo;
 EOF
 
 chown "$MYUSER:$MYUSER" "/home/$MYUSER/.bashrc"
