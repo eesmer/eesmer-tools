@@ -32,10 +32,10 @@ usermod -aG sudo "$MYUSER"
 
 # === APT REPO / CUSTOM REPO ===
 cat > /etc/apt/sources.list <<'EOF'
-deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
-deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
-deb http://deb.debian.org/debian-security trixie-security main contrib non-free-firmware
-deb http://deb.debian.org/debian trixie-backports main contrib non-free non-free-firmware
+deb http://ftp2.de.debian.org/debian/ trixie main contrib non-free non-free-firmware
+deb http://ftp2.de.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
+deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb http://ftp2.de.debian.org/debian/ tirixie-backports main contrib non-free non-free-firmware
 EOF
 grep -q '^deb .*\(brave-browser-apt-release\|brave.com\)' /etc/apt/sources.list || \
 	echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main' >> /etc/apt/sources.list
