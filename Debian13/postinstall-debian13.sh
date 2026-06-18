@@ -82,14 +82,13 @@ apt-get -y install xserver-xorg xserver-xorg-input-libinput xauth
 apt-get -y install systemd-resolved
 apt-get -y install i3 i3status xtrlock suckless-tools
 apt-get -y install xterm xinit xfce4-terminal
-apt-get -y install vim tmux openssh-server htop
+apt-get -y install vim tmux htop openssh-server fzf net-tools dnsutils
+apt-get -y install ripgrep ack wget curl rsync
 apt-get -y install sudo
 apt-get -y install lxpolkit
 apt-get -y install x11-xserver-utils whiptail
 apt-get -y install thunar thunar-volman tumbler ffmpegthumbnailer gvfs-backends gvfs-fuse udisks2
-apt-get -y install zsh fzf zsh-autosuggestions zsh-syntax-highlighting
 apt-get -y install feathernotes atril pavucontrol unzip xfce4-terminal freerdp2-x11 vlc feh xdg-utils desktop-file-utils
-apt-get -y install ripgrep ack wget curl rsync dnsutils net-tools
 apt-get -y install mtr-tiny traceroute nmap htop lsof tcpdump iperf3 ncdu pv jq ca-certificates gpg
 apt-get -y install pinentry-curses git git-credential-libsecret git-delta
 apt-get -y install firefox-esr chromium
