@@ -12,6 +12,10 @@
 # If we use debmirror for the Pardus mirror repository, it treats the source repository as if it were a full Debian repository and fetches it accordingly.
 # This results in unnecessary extra work.
 # If we use apt-mirror for the Debian mirror repository, it cannot fully explore the source repository.
+#
+# # Warning/Important
+# If this script is run directly, the `apt-mirror` and `mirror-debian13.sh` commands will download very large files.
+# Please read the following lines and make sure you understand them thoroughly
 # ------------------------------------------------------------------------
 
 apt-get update
