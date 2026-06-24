@@ -1,0 +1,27 @@
+
+# -----------------------------------
+# pardus.list for mirror repo
+# usage: apt-mirror mirror-pardus.list
+# -----------------------------------
+
+############# config ##################
+set base_path    /mnt/mirrors/pardus/
+set nthreads     20
+set _tilde 0
+############# end config ##############
+
+# Pardus 23
+deb http://depo.pardus.org.tr/pardus yirmiuc main contrib non-free non-free-firmware
+deb http://depo.pardus.org.tr/pardus yirmiuc-deb main contrib non-free non-free-firmware
+deb http://depo.pardus.org.tr/guvenlik yirmiuc-deb main contrib non-free non-free-firmware
+deb http://depo.pardus.org.tr/backports yirmiuc-backports main contrib non-free non-free-firmware
+
+# Pardus 25
+deb http://depo.pardus.org.tr/pardus yirmibes main contrib non-free non-free-firmware
+deb http://depo.pardus.org.tr/pardus yirmibes-deb main contrib non-free non-free-firmware
+deb http://depo.pardus.org.tr/guvenlik yirmibes-deb main contrib non-free non-free-firmware
+deb http://depo.pardus.org.tr/backports yirmibes-backports main contrib non-free non-free-firmware
+
+clean http://depo.pardus.org.tr/pardus
+clean http://depo.pardus.org.tr/guvenlik
+clean http://depo.pardus.org.tr/backports
