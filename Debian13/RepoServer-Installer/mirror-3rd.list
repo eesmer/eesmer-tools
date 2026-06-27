@@ -1,4 +1,9 @@
 
+# -----------------------------------
+# 3rd Party APT repositories for RepoServer
+# usage: apt-mirror mirror-3rd.list
+# -----------------------------------
+
 ############# config ##################
 set base_path    /mnt/mirrors/3rd/
 set nthreads     10
