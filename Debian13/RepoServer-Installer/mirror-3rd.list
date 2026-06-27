@@ -1,0 +1,23 @@
+
+############# config ##################
+set base_path    /mnt/mirrors/3rd/
+set nthreads     10
+set _tilde 0
+############# end config ##############
+
+# Google Chrome
+deb http://dl.google.com/linux/chrome/deb/ stable main
+
+# Opera Browser
+deb https://deb.opera.com/opera-stable/ stable non-free
+
+# Microsoft Edge
+deb https://packages.microsoft.com/repos/edge/ stable main
+
+# Visual Studio Code
+deb https://packages.microsoft.com/repos/code stable main
+
+clean http://dl.google.com/linux/chrome/deb/
+clean https://deb.opera.com/opera-stable/
+clean https://packages.microsoft.com/repos/edge/
+clean https://packages.microsoft.com/repos/code
