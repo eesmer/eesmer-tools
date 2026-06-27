@@ -22,7 +22,11 @@ deb https://packages.microsoft.com/repos/edge/ stable main
 # Visual Studio Code
 deb https://packages.microsoft.com/repos/code stable main
 
+# VSCodium
+deb https://repo.vscodium.dev/debs vscodium main
+
 clean http://dl.google.com/linux/chrome/deb/
 clean https://deb.opera.com/opera-stable/
 clean https://packages.microsoft.com/repos/edge/
 clean https://packages.microsoft.com/repos/code
+clean https://repo.vscodium.dev/debs
