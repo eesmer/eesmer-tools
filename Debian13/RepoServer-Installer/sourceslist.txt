@@ -1,0 +1,19 @@
+# DEBIAN
+cat > /etc/apt/sources.list <<'EOF'
+deb http://MIRROR_IP/debian trixie main contrib non-free non-free-firmware
+deb http://MIRROR_IP/debian trixie-updates main contrib non-free non-free-firmware
+deb http://MIRROR_IP/debian trixie-backports main contrib non-free non-free-firmware
+deb http://MIRROR_IP/debian-security trixie-security main contrib non-free non-free-firmware
+EOF
+
+# PARDUS
+cat > /etc/apt/sources.list <<'EOF'
+deb http://MIRROR_IP/pardus yirmiuc main contrib non-free non-free-firmware
+deb http://MIRROR_IP/pardus yirmiuc-deb main contrib non-free non-free-firmware
+deb http://MIRROR_IP/guvenlik yirmiuc-deb main contrib non-free non-free-firmware
+
+deb http://MIRROR_IP/backports yirmiuc-backports main contrib non-free non-free-firmware
+EOF
+
+apt update
+
