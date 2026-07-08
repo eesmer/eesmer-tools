@@ -24,5 +24,5 @@ mkdir -p /mnt/mirrors/debian
 mkdir -p /mnt/mirrors/pardus
 
 apt-mirror mirror-pardus.list
+apt-mirror mirror-3rd.list
 bash mirror-debian13.sh
-
