@@ -14,10 +14,7 @@ SERVER="$1"
 USERNAME="$2"
 DOMAIN="$3"
 
-xfreerdp3 /v:$SERVER /u:$USERNAME /d:$DOMAIN \
-	 /dynamic-resolution \
-         +clipboard \
-         /cert:tofu
+xfreerdp3 /v:$SERVER /u:$USERNAME /d:$DOMAIN /dynamic-resolution +clipboard /sound:sys:alsa,latency:100,quality:high /audio-mode:0 /cert:tofu
 
 # extras:
 # --------------------------------------------------------------------------------------------------------------
