@@ -5,8 +5,8 @@
 # Usage  : bash rdp-connect.sh 192.168.2.11 administrator testdomain
 # Extra  : man xfreerdp
 # Install: echo "$XDG_SESSION_TYPE" / loginctl show-session "$XDG_SESSION_ID" -p Type
-           x11     -> apt install freerdp3-x11
-		   wayland -> apt install freerdp3-wayland
+#          x11     -> apt install freerdp3-x11
+#		   wayland -> apt install freerdp3-wayland
 # Tested : Debian13
 # ----------------------------------------
 
