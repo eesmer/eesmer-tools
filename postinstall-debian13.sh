@@ -241,3 +241,15 @@ done
 
 EOF
 
+chown $MYUSER:$MYUSER /usr/local/bin/welcome.sh
+chmod 755 /usr/local/bin/welcome.sh
+chmod +x /usr/local/bin/welcome.sh
+
+# tty1 login TUI
+cat > "/home/$MYUSER/bash_profile" <<'BASHPROFILE'
+# tty1 login TUI
+if [[ "$(tty)" == "/dev/tty1" ]]; then
+    /usr/local/bin/welcome.sh
+fi
+BASHPROFILE
+
