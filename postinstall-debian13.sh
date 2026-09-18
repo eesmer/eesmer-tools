@@ -88,6 +88,7 @@ apt-get -y install mtr-tiny traceroute nmap htop lsof tcpdump iperf3 ncdu pv jq 
 apt-get -y install pinentry-curses git git-delta
 apt-get -y install firefox-esr chromium
 apt-get -y install vim-airline vim-airline-themes fonts-powerline
+apt-get -y network-manager network-manager-gnome wireless-regdb iw rfkill
 
 apt-get update && apt-get -y full-upgrade && apt-get -y autoremove --purge && apt-get -y autoclean
 
