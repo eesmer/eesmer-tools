@@ -96,7 +96,6 @@ fi
 
 # === MIME Defaults for $MYUSER(erkan) ===
 mkdir -p "/home/$MYUSER/.config"
-chmod 0700 "/home/$MYUSER/.config"
 chown $MYUSER:$MYUSER "/home/$MYUSER/.config"
 mkdir -p "/home/$MYUSER/.local/share/applications"
 chmod 0700 "/home/$MYUSER/.config"
