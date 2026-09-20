@@ -90,21 +90,16 @@ EOF
 grep -qi 'GenuineIntel' /proc/cpuinfo && apt-get -y install intel-microcode || grep -qi 'AuthenticAMD' /proc/cpuinfo && apt-get -y install amd64-microcode || true
 apt-get -y install isenkram-cli && isenkram-autoinstall-firmware || true
 apt-get -y install xserver-xorg xserver-xorg-input-libinput xauth
-apt-get -y install systemd-resolved
 apt-get -y install i3 i3status xtrlock suckless-tools
-apt-get -y install xterm xinit xfce4-terminal
-apt-get -y install vim tmux htop openssh-server fzf net-tools dnsutils
-apt-get -y install ripgrep ack wget curl rsync
-apt-get -y install sudo
-apt-get -y install lxpolkit
-apt-get -y install x11-xserver-utils whiptail
+apt-get -y install xterm xinit lxpolkit x11-xserver-utils
+apt-get -y install vim tmux htop openssh-server sudo xfce4-terminal whiptail fzf net-tools dnsutils
+apt-get -y install feathernotes atril pavucontrol unzip freerdp3-x11 vlc feh xdg-utils desktop-file-utils
+apt-get -y install ripgrep ack wget curl rsync traceroute nmap lsof
+apt-get -y install mtr-tiny tcpdump iperf3 ncdu pv jq ca-certificates gpg pinentry-curses git git-delta
 apt-get -y install thunar thunar-volman tumbler ffmpegthumbnailer gvfs-backends gvfs-fuse udisks2
-apt-get -y install feathernotes atril pavucontrol unzip xfce4-terminal freerdp3-x11 vlc feh xdg-utils desktop-file-utils
-apt-get -y install mtr-tiny traceroute nmap htop lsof tcpdump iperf3 ncdu pv jq ca-certificates gpg
-apt-get -y install pinentry-curses git git-delta
 apt-get -y install firefox-esr chromium
 apt-get -y install vim-airline vim-airline-themes fonts-powerline
-apt-get -y network-manager network-manager-gnome wireless-regdb iw rfkill
+apt-get -y install network-manager network-manager-gnome wireless-regdb iw rfkill
 
 apt-get update && apt-get -y full-upgrade && apt-get -y autoremove --purge && apt-get -y autoclean
 
