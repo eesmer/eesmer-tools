@@ -31,14 +31,30 @@ timedatectl set-ntp true
 usermod -aG sudo "$MYUSER"
 
 # === APT REPO / CUSTOM REPO ===
-cat > /etc/apt/sources.list <<'EOF'
-deb http://deb.debian.org/debian/ trixie main contrib non-free non-free-firmware
-deb http://deb.debian.org/debian/ trixie-updates main contrib non-free non-free-firmware
-deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
-#deb http://deb.debian.org/debian/ tirixie-backports main contrib non-free non-free-firmware
-EOF
-chmod 644 /etc/apt/sources.list
+rm -f /etc/apt/sources.list
+cat > /etc/apt/sources.list.d/debian.sources <<'EOF'
+Types: deb
+URIs: http://ftp2.de.debian.org/debian/
+Suites: trixie trixie-updates
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+Enabled: yes
 
+Types: deb
+URIs: http://security.debian.org/debian-security/
+Suites: trixie-security
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+Enabled: yes
+
+Types: deb
+URIs: http://ftp2.de.debian.org/debian/
+Suites: trixie-backports
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+Enabled: yes
+EOF
+chmod 644 /etc/apt/sources.list.d/debian.sources
 apt-get update
 
 # === TIME/SYNC ===
