@@ -72,20 +72,6 @@ sed -i 's/^# *\(tr_TR.UTF-8\)/\1/' /etc/locale.gen
 locale-gen
 update-locale LANG=en_US.UTF-8 LC_TIME=tr_TR.UTF-8
 
-cat >/etc/apt/preferences.d/99-backports <<'EOF'
-Package: *
-Pin: release n=trixie-backports
-Pin-Priority: 100
-EOF
-
-mkdir -p /etc/apt/apt.conf.d
-cat > /etc/apt/apt.conf.d/99-options <<'EOF'
-APT::Install-Recommends "false";
-APT::Install-Suggests "false";
-Acquire::Retries "3";
-Dpkg::Options { "--force-confdef"; "--force-confold"; };
-EOF
-
 # === PACKAGES ===
 grep -qi 'GenuineIntel' /proc/cpuinfo && apt-get -y install intel-microcode || grep -qi 'AuthenticAMD' /proc/cpuinfo && apt-get -y install amd64-microcode || true
 apt-get -y install isenkram-cli && isenkram-autoinstall-firmware || true
