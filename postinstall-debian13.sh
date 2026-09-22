@@ -129,6 +129,15 @@ find "/home/$MYUSER" -type d -exec chmod 755 {} \;
 find "/home/$MYUSER" -type f -exec chmod 644 {} \;
 
 # === MasterBox Install ===
+apt-get -y install figlet
+figlet "MasterBox" > /etc/motd
+{
+printf 'The programs included with the Debian GNU/Linux system are free software;
+Debian GNU/Linux is provided WITHOUT ANY WARRANTY, to the extent permitted by applicable law.
+==============================================================================================='
+} >> /etc/motd
+printf '\n\n\033[1;32mCOMMAND to USE:\033[0m \033[1;36mstewardsh\033[0m\n\n' >> /etc/motd
+
 printf '\n\033[1;31m.:: MasterBox ::.\033[0m' > /etc/issue
 printf '\n\033[1;31m==================\033[0m\n' >> /etc/issue
 echo "_____________________________" >> /etc/issue
