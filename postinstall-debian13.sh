@@ -1,11 +1,13 @@
 #!/bin/bash
 
 #-------------------------------------------------------------------------
-# Debian 13 PostInstall
-# Debian13-postinstall.sh
+# Personal Debian13-postinstall.sh
 # This script customizes my Debian installation for personal use.
-# It includes the tools and configurations I use.
-# Prepared for Debian 13 / Tested with Debian 13
+# The installation is performed using the Debian netinstall ISO,
+# https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/
+# selecting only the "system utilities" line on the Tasksel screen.
+# Then, this script installs the desktop environment and the necessary tools, and applies my own configurations.
+# Prepared for Debian 13 / Tested with Debian 13.
 #-------------------------------------------------------------------------
 
 set -euo pipefail
