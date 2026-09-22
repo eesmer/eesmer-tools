@@ -127,3 +127,16 @@ wget -r -np -nH --cut-dirs=2 -R "index.html*" -N -P /tmp/$TMPDIR https://esmerka
 mv $TMPDIR/ /home/$MYUSER/daily-scripts
 find "/home/$MYUSER" -type d -exec chmod 755 {} \;
 find "/home/$MYUSER" -type f -exec chmod 644 {} \;
+
+# === MasterBox Install ===
+printf '\n\033[1;31m.:: MasterBox ::.\033[0m' > /etc/issue
+printf '\n\033[1;31m==================\033[0m\n' >> /etc/issue
+echo "_____________________________" >> /etc/issue
+echo "Hostname : \n" >> /etc/issue
+echo "Kernel   : \r - \s" >> /etc/issue
+echo "TTY      : \l" >> /etc/issue
+echo "Arch     : \m" >> /etc/issue
+echo "Distro   : Debian GNU/Linux 13" >> /etc/issue
+echo "_____________________________" >> /etc/issue
+echo "" >> /etc/issue
+cat /etc/issue > /etc/issue.net
