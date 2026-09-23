@@ -80,7 +80,7 @@ apt-get -y install isenkram-cli && isenkram-autoinstall-firmware || true
 apt-get -y install xserver-xorg xserver-xorg-input-libinput xauth
 apt-get -y install i3 i3status xtrlock suckless-tools
 apt-get -y install xterm xinit lxpolkit x11-xserver-utils
-apt-get -y install vim tmux htop openssh-server sudo xfce4-terminal whiptail fzf net-tools dnsutils
+apt-get -y install vim tmux htop openssh-server sudo xfce4-terminal whiptail fzf net-tools dnsutils sshuttle
 apt-get -y install feathernotes atril pavucontrol unzip freerdp3-x11 vlc feh xdg-utils desktop-file-utils
 apt-get -y install ripgrep ack wget curl rsync traceroute nmap lsof
 apt-get -y install mtr-tiny tcpdump iperf3 ncdu pv jq ca-certificates gpg pinentry-curses git git-delta
