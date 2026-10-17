@@ -1,9 +1,20 @@
 #!/bin/bash
 
 #-------------------------------------------------------------------
+# Samba Active Directory Installer
 # This script has been tested in Debian environment.
 # It is compatible with Debian.
-# Compatible with Debian 13
+# - It installs the Samba package and its requirements
+# - It installs and configures bind9 for DNS
+# - It installs and configures the chrony service for the NTP service
+# Then, it performs the Domain Name Provisioning process according to the information it receives and configures the smb.conf file.
+# The machine on which it is run takes the PDC role and starts working as a DC for the established domain.
+# ------------------------------------------------------------------
+# It should be run in a Debian 13(trixie) environment.
+# ------------------------------------------------------------------
+# USAGE:
+# wget https://raw.githubusercontent.com/eesmer/MyNotes/refs/heads/main/HelperScripts/SambaAD/samba-activedirectory-installer.sh
+# bash samba-activedirectory-installer.sh
 #-------------------------------------------------------------------
 
 # Color Codes
