@@ -11,6 +11,7 @@
 # The machine on which it is run takes the PDC role and starts working as a DC for the established domain.
 # ------------------------------------------------------------------
 # It should be run in a Debian 13(trixie) environment.
+# You might also be able to use it on a distribution derived from Debian 13, but this has not been tested.
 # ------------------------------------------------------------------
 # USAGE:
 # wget https://raw.githubusercontent.com/eesmer/MyNotes/refs/heads/main/HelperScripts/SambaAD/samba-activedirectory-installer.sh
