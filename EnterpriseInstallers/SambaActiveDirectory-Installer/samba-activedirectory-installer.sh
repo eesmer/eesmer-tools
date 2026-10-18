@@ -183,12 +183,7 @@ SAMBAAD_INSTALL() {
 	cp /var/lib/samba/private/krb5.conf /etc/
 	echo "search $REALM" > /etc/resolv.conf
 	echo "nameserver 127.0.0.1" >> /etc/resolv.conf
-
-
-
 # DC IP and SUBNET
-# Varsayılan çıkış yolunda kullanılan kaynak IPv4 adresi.
-# Bu komut hedefe paket göndermez; yerel routing tablosunu sorgular.
 DC_IP=$(
     ip -4 route get 1.1.1.1 |
         awk '{
@@ -200,10 +195,9 @@ DC_IP=$(
         }'
 )
 if [[ -z "$DC_IP" ]]; then
-    echo "[HATA] DC IPv4 adresi belirlenemedi." >&2
+    echo "DC IPv4 address could not be determined" >&2
     exit 1
 fi
-# Seçilen adresin prefix bilgisini al: ör. 10.12.12.14/24
 DC_CIDR=$(
     ip -o -4 address show scope global |
         awk -v ip="$DC_IP" '{
@@ -215,11 +209,9 @@ DC_CIDR=$(
         }'
 )
 if [[ -z "$DC_CIDR" ]]; then
-    echo "[HATA] DC adresinin prefix bilgisi bulunamadı." >&2
+    echo "DC prefix info not found" >&2
     exit 1
 fi
-# Prefix'i gerçek ağ adresine dönüştür.
-# /24 dışında /23, /22 vb. ağlarda da doğru hesaplar.
 if ! CLIENT_NETWORK=$(
     python3 - "$DC_CIDR" <<'PY'
 import ipaddress
@@ -227,11 +219,11 @@ import sys
 print(ipaddress.IPv4Interface(sys.argv[1]).network)
 PY
 ); then
-    echo "[HATA] Ağ adresi hesaplanamadı." >&2
+    echo "Network address could not be determined" >&2
     exit 1
 fi
-printf 'DC IP adresi : %s\n' "$DC_IP"
-printf 'İstemci ağı  : %s\n' "$CLIENT_NETWORK"
+printf 'DC IP Address  : %s\n' "$DC_IP"
+printf 'Client Network : %s\n' "$CLIENT_NETWORK"
 
 # named.conf.options
 cat > /etc/bind/named.conf.options << EOF
@@ -305,7 +297,18 @@ systemctl restart samba-ad-dc
 systemctl restart bind9
 }
 
+SYSVOL_CHECK(){
+if samba-tool ntacl sysvolcheck; then
+    echo "SYSVOL ACL check successfull"
+else
+    SYSVOL_RC=$?
+    printf 'SYSVOL ACL check failed Code: %s\n' \
+        "$SYSVOL_RC" >&2
+fi
+}
+
 CHECKRUN_ROOT
 CHECK_DISTRO
 UPDATE_CONTROL
 SAMBAAD_INSTALL
+SYSVOL_CHECK
