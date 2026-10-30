@@ -26,3 +26,6 @@ sed -i '/global/a\ \tprintcap name = /dev/null' /etc/samba/smb.conf
 
 # Turn off NTLMv1
 sed -i '/global/a\ \tntlm auth = mschapv2-and-ntlmv2-only' /etc/samba/smb.conf
+
+# log level
+sed -i '/global/a\ \tlog level = 1 auth_audit:3' /etc/samba/smb.conf
